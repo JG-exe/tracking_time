@@ -49,7 +49,7 @@ Deliverable: Fully local, private period tracking app MVP
 ## Optional Weeks (7–8): Stretch Goals
 - Mood tracking visualisation (graph)
 - Custom cycle length tuning
-[ ] Gesture navigation
-[ ] Accessibility tuning (screen reader, font scaling)
+- Gesture navigation
+- Accessibility tuning (screen reader, font scaling)
 
 Deliverable: Finished app ready for portfolio or store (if desired)
