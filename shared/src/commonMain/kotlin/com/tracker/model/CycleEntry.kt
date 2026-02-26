@@ -1,4 +1,4 @@
 package com.tracker.model
-import java.time.LocalDate
+import kotlinx.datetime.LocalDate
 
 data class CycleEntry(val startDate: LocalDate, val endDate: LocalDate)
