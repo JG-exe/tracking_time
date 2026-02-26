@@ -1,0 +1,4 @@
+# Directories and files to exclude from AI processing
+.idea/
+.git/
+build/

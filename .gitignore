@@ -1,0 +1,6 @@
+# Android Studio generated files
+.gradle
+/build
+/captures
+.idea
+local.properties
