@@ -1,6 +1,7 @@
 # Tracking times
 
 > A truly private period tracking app
+
 ---
 
 ## Why
@@ -9,6 +10,7 @@ With this project I want to learn more about app development and prediction algo
 
 Most period tracking apps send your data to remote servers. This one won't.  
 Everything stays on your device. No accounts, cloud syncs or telemetry.
+
 ---
 
 ## Features
@@ -22,6 +24,48 @@ Everything stays on your device. No accounts, cloud syncs or telemetry.
 - [ ] Local-only data storage. No network calls, ever
 - [ ] Purge data button to remove all data and overwrite the storage with crap to prevent data
   retrieval
+
+---
+
+## Data & Privacy
+
+- All data is stored locally.
+    - The plan is to use Room (SQLite) for this.
+- The app requests no internet permission and will never connect itself to the internet.
+- No analytics, no crash reporting, no third part SDKs that phone home.
+    - (Please don't hesitate to let me know if anything is wrong.)
+
+### Project Structure
+
+```
+app/
+├── data/
+│   ├── local/          # Room database, DAOs, entities
+│   └── repository/     # Repository implementations
+├── domain/
+│   ├── model/          # Domain models (Cycle, Phase, Biomarker, etc.)
+│   └── usecase/        # Business logic and prediction algorithm
+└── ui/
+    ├── home/           # Cycle overview screen
+    ├── log/            # Daily tracking input
+    └── history/        # Past cycles and trends
+```
+
+---
+
+## Prediction Algorithm
+
+The app calculates cycle predictions by working **backwards from the predicted end of the cycle**,
+not forwards from day one. This is because the luteal phase (post-ovulation) is relatively
+consistent per individual (~12–16 days), while the follicular phase is highly variable.
+
+Key algorithm rules:
+
+- Uses a rolling average of the last 3–6 cycles to estimate the follicular phase length.
+- A positive LH test acts as a **hard interrupt** — all prior calendar predictions are discarded and
+  the next period is recalculated as ~14 days from that point.
+- A confirmed BBT shift (≥0.3°C sustained for 3+ days) **locks the fertile window** and begins the
+  countdown to the next cycle.
 
 ---
 
