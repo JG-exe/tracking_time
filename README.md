@@ -30,25 +30,32 @@ Everything stays on your device. No accounts, cloud syncs or telemetry.
 ## Data & Privacy
 
 - All data is stored locally.
-    - The plan is to use Room (SQLite) for this.
+    - Data is stored in a local SQLDelight database.
 - The app requests no internet permission and will never connect itself to the internet.
 - No analytics, no crash reporting, no third part SDKs that phone home.
     - (Please don't hesitate to let me know if anything is wrong.)
 
-### Project Structure
+---
+
+## Project Structure
+
+This project uses a Kotlin Multiplatform (KMP) architecture to share code between Android and iOS.
 
 ```
-app/
-├── data/
-│   ├── local/          # Room database, DAOs, entities
-│   └── repository/     # Repository implementations
-├── domain/
-│   ├── model/          # Domain models (Cycle, Phase, Biomarker, etc.)
-│   └── usecase/        # Business logic and prediction algorithm
-└── ui/
-    ├── home/           # Cycle overview screen
-    ├── log/            # Daily tracking input
-    └── history/        # Past cycles and trends
+tracking_time/
+├── android/            # Android-specific UI (Jetpack Compose)
+│   └── src/main/
+├── ios/                # (Future) iOS-specific UI (SwiftUI)
+└── shared/             # KMP shared logic (Kotlin)
+    └── src/
+        ├── commonMain/
+        │   └── kotlin/com/tracker/
+        │       ├── model/        # Data classes (CycleEntry)
+        │       ├── prediction/   # Cycle calculation logic
+        │       ├── storage/      # Repository interfaces
+        │       └── util/         # Helper functions
+        ├── androidMain/          # Android-specific implementations (e.g., SQLDelight driver)
+        └── iosMain/              # iOS-specific implementations
 ```
 
 ---
@@ -72,6 +79,7 @@ Key algorithm rules:
 ## Tech Stack
 
 - **Language:** Kotlin
+- **Local Database:** SQLDelight
 - **Min SDK:** 24 (Android 7.0)
 
 ---
@@ -80,7 +88,6 @@ Key algorithm rules:
 
 For this project, I use JetBrains' Android Studio with the Gemini 2.5^ Pro as integrated assistant
 to speed up the development.  
-I also use Claude Sonnet 4.6^ to help me with the file structure as I learn.
 I also use Claude Sonnet 4.6^ to help me with the file structure as I learn.
 
 ---
