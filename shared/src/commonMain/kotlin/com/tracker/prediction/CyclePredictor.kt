@@ -1,5 +1,11 @@
 package com.tracker.prediction
 
+import com.tracker.model.CycleEntry
+import com.tracker.util.DateUtils.daysBetween
+import kotlinx.datetime.DatePeriod
+import kotlinx.datetime.LocalDate
+import kotlin.math.roundToInt
+
 class CyclePredictor(
 	private val defaultDuration: Int = 5,
 	private val defaultCycleLength: Int = 28,
@@ -14,21 +20,21 @@ class CyclePredictor(
 
 	fun averagePeriodDuration(entries: List<CycleEntry>): Int {
 		val durations = entries
-			.filter { it.endDate != null }
-			.map { ChronoUnit.DAYS.between(it.startDate, it.endDate).toInt() + 1 }
+			.filter { !it.isEndDatePredicted }
+			.map { daysBetween(it.startDate, it.endDate) + 1 }
 		return if (durations.isEmpty()) defaultDuration
 		else durations.takeLast(maxSamples).average().roundToInt()
 	}
 
 	fun nextPeriodStart(entries: List<CycleEntry>): LocalDate? {
 		val last = entries.maxByOrNull { it.startDate } ?: return null
-		return last.startDate.plusDays(averageCycleLength(entries).toLong())
+		return last.startDate.plus(DatePeriod(days = averageCycleLength(entries)))
 	}
 
 	private fun cycleLength(entries: List<CycleEntry>): List<Int> {
 		val sorted = entries.sortedBy { it.startDate }
 		return sorted.zipWithNext { a, b ->
-			ChronoUnit.DAYS.between(a.startDate, b.startDate).toInt()
+			daysBetween(a.startDate, b.startDate)
 		}
 	}
 }
