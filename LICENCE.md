@@ -1,6 +1,6 @@
 # Source-Available Licence
 
-Copyright (c) 2025 Joachim Gautama. All rights reserved.
+Copyright (c) 2026 Joachim Gautama. All rights reserved.
 
 ## Permissions
 
