@@ -2,10 +2,10 @@
 
 ### Missing Implementations
 
-- [ ] **`CycleEntry.kt`**: Create the `CycleEntry` data class in the `shared/src/commonMain/kotlin/com/tracker/model/` directory.
-- [ ] **SQLDelight Setup**: 
-    - [ ] Add the SQLDelight plugin to `shared/build.gradle.kts`.
-    - [ ] Add SQLDelight dependencies for the common and Android source sets.
+- [x] **`CycleEntry.kt`**: Create the `CycleEntry` data class in the `shared/src/commonMain/kotlin/com/tracker/model/` directory.
+- [x] **SQLDelight Setup**: 
+    - [x] Add the SQLDelight plugin to `shared/build.gradle.kts`.
+    - [x] Add SQLDelight dependencies for the common and Android source sets.
 - [ ] **Database Implementation**:
     - [ ] Define the database schema in a `.sq` file.
     - [ ] Implement the platform-specific database driver in `shared/src/androidMain`.
