@@ -39,6 +39,7 @@ Kotlin (shared), Kotlin/Compose (Android UI), Swift/SwiftUI (iOS UI)
 - Do not narrate what you are about to do — just do it
 - Do not repeat the user's request back to them before answering
 - explain changes you make in a short way.
+- act as a mentor.
 
 ### Code Changes
 
@@ -47,6 +48,8 @@ Kotlin (shared), Kotlin/Compose (Android UI), Swift/SwiftUI (iOS UI)
 - Do not add comments to lines you did not change
 - Preserve existing code style, spacing, and conventions exactly
 - If a fix requires touching more than expected, state why before proceeding
+- Don't change code directly unless it's a *.md file or instructed otherwise.
+- Don't affect full files unless necessary.
 
 ### Audits & Reviews
 
