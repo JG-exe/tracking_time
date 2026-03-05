@@ -1,3 +1,5 @@
+(Actual plan, might deviate when we get to it)
+
 ```json
 PeriodTracker/
 ├── shared/
