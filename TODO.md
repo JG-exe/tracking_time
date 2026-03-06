@@ -16,3 +16,15 @@
 - [ ] **Android UI**: Build the Jetpack Compose UI for the Android app.
     - **Note:** Remember to update the `README.md` tech stack when this is added.
 - [ ] **iOS UI**: Build the SwiftUI interface for the iOS app.
+
+- [ ] All DB tables encrypted with SQLCipher (key derived from user PIN)
+- [ ] Field‑level encryption for health‑sensitive columns
+- [ ] Granular consent UI + signed ConsentReceipt storage
+- [ ] Retention job (auto‑purge >5 years)
+- [ ] “Delete all my data” button that wipes DB, model, audit log
+- [ ] Integrity monitor + 72‑hour breach‑report template
+- [ ] Append‑only encrypted audit log (metadata only)
+- [ ] PIA document signed by DPO, referenced in app
+- [ ] No third‑party telemetry SDKs linked
+- [ ] Clear privacy notice displayed on first launch
+- [ ] DPO dashboard (audit view, consent revocation) behind admin guard
