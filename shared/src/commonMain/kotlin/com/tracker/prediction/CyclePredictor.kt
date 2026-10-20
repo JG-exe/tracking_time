@@ -19,8 +19,7 @@ class CyclePredictor(
 	}
 
 	fun averagePeriodDuration(entries: List<CycleEntry>): Int {
-		val durations = entries
-			.filter { !it.isEndDatePredicted }
+		val durations = entries.filter { !it.isEndDatePredicted }
 			.map { daysBetween(it.startDate, it.endDate) + 1 }
 		return if (durations.isEmpty()) defaultDuration
 		else durations.takeLast(maxSamples).average().roundToInt()
